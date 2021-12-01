@@ -5,7 +5,7 @@ import java.util.Stack;
  */
 
 public class Calculator {
-    
+
     /**
      * Function that rewrite expression using Reverse Polish notation.
      * @param value - an expression entered by the user
