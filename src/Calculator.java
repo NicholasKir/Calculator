@@ -24,7 +24,7 @@ public class Calculator {
      * @return - same expression in RPN
      */
     public static String ToRPN(String value) {
-        if(check(value)==1){
+
             String s="";
         Stack<Character> stack =new Stack<>();
         int priority;
@@ -49,8 +49,7 @@ public class Calculator {
         }
         while(!stack.empty()) s+=stack.pop();
         return s;
-        }
-        else return "Incorrect expression";
+
     }
     /**
      * Function that calculate value of expression using its RPN-version
@@ -63,16 +62,15 @@ public class Calculator {
         for(int i=0; i<rvalue.length(); i++){
             if(rvalue.charAt(i)==' ') continue;
             if(getpriority(rvalue.charAt(i))==0){
-                while(rvalue.charAt(i)==0){
-                    s+=rvalue.charAt(i+1);
+                while(rvalue.charAt(i)!=' ' && getpriority(rvalue.charAt(i))==0){
+                    s+=rvalue.charAt(i++);
                     if(i==rvalue.length()) break;
                 }
                 stack.push(Double.parseDouble(s));
                 s=new String();
             }
             if(getpriority(rvalue.charAt(i))>1){
-                double a=stack.pop();
-                double b=stack.pop();
+                double a=stack.pop(), b=stack.pop();
                 if(rvalue.charAt(i)=='+') stack.push(b+a);
                 if(rvalue.charAt(i)=='-') stack.push(b-a);
                 if(rvalue.charAt(i)=='*') stack.push(b*a);
