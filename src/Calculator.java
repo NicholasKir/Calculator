@@ -5,19 +5,7 @@ import java.util.Stack;
  */
 
 public class Calculator {
-    /**
-     * FUnction that checks the validity of an expression
-     * @param str - expression
-     * @return 1 if valid and 0 if invalid
-     */
-    public static int check(String str)
-    {
-        int i=0;
-        while(((str.charAt(i)==')'||str.charAt(i)=='('||str.charAt(i)=='+'||str.charAt(i)=='-'||str.charAt(i)=='*'||str.charAt(i)=='/')&& (str.charAt(i+1)<='9'&& str.charAt(i+1)>='0')) && i!=str.length()-2 )i++;
-        if(i==str.length()-2) return 1;
-        else return 0;
-    }
-
+    
     /**
      * Function that rewrite expression using Reverse Polish notation.
      * @param value - an expression entered by the user
