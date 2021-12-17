@@ -1,31 +1,45 @@
-
-import Calculator.Calculator;
+import java.io.*;
 import java.util.Scanner;
-
-/**
- * Main: demonstration of work.
- * You can try new expression while input word "stop".
- */
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Enter the expression in the prefix entry: ");
+import java.util.NoSuchElementException;
+public class Main
+{
+    public static void main(String[] args) throws Exception
+    {
+        System.out.println("1.Enter new expression.");
+        System.out.println("0.Exit.");
+        System.out.print(">");
         Scanner in = new Scanner(System.in);
-        String variable = in.nextLine();
+        while (!in.hasNextInt()) {
+            System.out.println("Error! Enter the number.");
+            in.next();
+        }
+        int quit = in.nextInt();
+        while (quit<0||quit>1) {
+            System.out.println("Error! Enter 0 or 1.");
+            quit = in.nextInt();
+        }
+        while (quit != 0)
+        {
 
-        while(!variable.equals("stop")){
-            try {
-                Calculator calc = new Calculator();
-                variable = calc.toPostfix(variable);
-                double result = calc.calculate(variable);
-                System.out.println("Result: " + result);
-                System.out.println("For stop enter 'stop' ");
-                System.out.println("Else enter the new expression: ");
-                variable = in.nextLine();
+            Scanner scan = new Scanner(System.in);
+            System.out.print(">");
+            String example=scan.nextLine();
+            new Calculator(example);
+            System.out.print("Result:");
+            System.out.println(Calculator.getting_a_solution());
+            System.out.println("1.Enter new expression.");
+            System.out.println("0.Exit.");
+            System.out.print(">");
+            while (!in.hasNextInt())
+            {
+                System.out.println("Error! Enter the number.");
+                in.next();
             }
-            catch (Exception e) {
-                System.out.println("ERROR!\nPossible errors: division by zero or incorrect data entry ");
-                e.printStackTrace();
-                variable = "stop";
+            quit = in.nextInt();
+            while (quit<0||quit>1)
+            {
+                System.out.println("Error! Enter 0 or 1.");
+                quit = in.nextInt();
             }
         }
     }
